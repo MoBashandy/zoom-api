@@ -1,0 +1,71 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoom</title>
+    <link rel="stylesheet" href="./mo.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title">ZOOM</div>
+      <div class="form">
+        <form id="zoomForm" action="mo.html" method="GET">
+          <div class="inputfield">
+            <label for="topic">Topic</label>
+            <input type="text" id="topic" name="topic" class="input" required />
+          </div>
+          <div class="inputfield">
+            <label for="duration">Duration (minutes)</label>
+            <input
+              type="number"
+              id="duration"
+              name="duration"
+              class="input"
+              min="1"
+              required />
+          </div>
+          <div class="inputfield">
+            <label for="start_time">Start Time</label>
+            <input
+              type="datetime-local"
+              id="start_time"
+              name="start_time"
+              class="input"
+              required />
+          </div>
+          <div class="inputfield">
+            <button type="submit" class="btn">Get Meeting Link</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Function to get URL parameters
+      function getUrlParameter(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+        var results = regex.exec(location.search);
+        return results === null
+          ? ""
+          : decodeURIComponent(results[1].replace(/\+/g, " "));
+      }
+
+      // Get the 'code' parameter from the URL
+      const code = getUrlParameter("code");
+
+      // Add the 'code' parameter to the form as a hidden input field
+      if (code) {
+        const form = document.getElementById("zoomForm");
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "code";
+        input.value = code;
+        form.appendChild(input);
+      }
+    </script>
+  </body>
+</html>

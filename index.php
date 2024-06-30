@@ -5,7 +5,7 @@ function get_oauth_step_1()
 {
     //++++++++++++++++++++++++++++++++++++++++++++++++
     //++++++++++++++++++++++++++++++++++++++++++++++++
-    $redirectURL = 'https://api.dalilelsouq.com/zoom/mo.php';
+    $redirectURL = 'REDIRECT-URI';
     $authorizeURL = 'https://zoom.us/oauth/authorize';
     //++++++++++++++++++++++++++++++++++++++++++++++++
     $clientID = 'CLIENT-ID';
@@ -21,7 +21,7 @@ function get_oauth_step_1()
 function get_oauth_step_2($code)
 {
     $tokenURL = 'https://zoom.us/oauth/token';
-    $redirectURL = 'https://api.dalilelsouq.com/zoom/mo.php';
+    $redirectURL = 'REDIRECT-URI';
     $clientID = 'CLIENT-ID';
     $clientSecret = 'CLIENT-SECRET';
 

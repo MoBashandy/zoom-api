@@ -7,7 +7,7 @@
 2- you will see after it some data don't forget to add your api link it will be my api in your server 
   ![image](https://github.com/MoBashandy/zoom-api/assets/105816920/b3d3ab10-a1be-4c7e-a930-c6573b51554f)
 
-3- Copy your redirect uri and in the line 6,22 put your redirct intead of REDIRECT-URI 
+3- Copy your redirect uri and in the line 6,22 put your redirct intead of REDIRECT-URI  that will be in our case mo.html see where you but it and but it as a link it must be in server because zoom will call it to open to you and this step can't skip 
 
       $redirectURL = 'REDIRECT-URI';
 

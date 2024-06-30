@@ -1,12 +1,14 @@
 <?php
+require_once './init.php';
+// Initiate OAuth Flow
 function get_oauth_step_1()
 {
     //++++++++++++++++++++++++++++++++++++++++++++++++
     //++++++++++++++++++++++++++++++++++++++++++++++++
-    $redirectURL = 'https://api.dalilelsouq.com/zoom/index.php';
+    $redirectURL = 'https://api.dalilelsouq.com/zoom/mo.php';
     $authorizeURL = 'https://zoom.us/oauth/authorize';
     //++++++++++++++++++++++++++++++++++++++++++++++++
-    $clientID = 'gdjXb8LMSkOA85b5pS8iVg';
+    $clientID = 'CLIENT-ID';
     //++++++++++++++++++++++++++++++++++++++++++++++++
     //++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -19,9 +21,9 @@ function get_oauth_step_1()
 function get_oauth_step_2($code)
 {
     $tokenURL = 'https://zoom.us/oauth/token';
-    $redirectURL = 'https://api.dalilelsouq.com/zoom/index.php';
-    $clientID = 'gdjXb8LMSkOA85b5pS8iVg';
-    $clientSecret = 'SaymGmi9hiX12HT9K8eWLX12hZOwTQ3P';
+    $redirectURL = 'https://api.dalilelsouq.com/zoom/mo.php';
+    $clientID = 'CLIENT-ID';
+    $clientSecret = 'CLIENT-SECRET';
 
     $curl = curl_init();
     curl_setopt_array($curl, [
@@ -73,7 +75,7 @@ function create_a_zoom_meeting($accessToken)
     $requestBody = [
         'topic' => $_GET['topic'] ?? 'New Meeting',
         'type' => 2,
-        'start_time' => $_GET['date'] ?? date('Y-m-d\TH:i:s') . 'Z',
+        'start_time' => $_GET['start_time'] . ':00Z' ?? date('Y-m-d\TH:i:s') . 'Z',
         'duration' => $_GET['duration'] ?? 30,
         'password' => $_GET['password'] ?? mt_rand(),
         'timezone' => 'UTC',
@@ -133,7 +135,9 @@ function index()
 
         $get_zoom_details = create_a_zoom_meeting($getToken['access_token']);
 
-        echo json_encode($get_zoom_details);
+        $link = $get_zoom_details['response']['join_url'];
+
+        echo ($link);
     }
 }
 

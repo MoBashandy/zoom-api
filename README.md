@@ -33,10 +33,26 @@
      'duration' => $_GET['duration'] ?? 30,
     //'duration' => 120 ?? 30,
 
+NOTE:
     
+    the last three steps you can skip it because the next steps
 
+10- in file mo.html in line 15 edit action="mo.html" to the link you will put in your html file 
 
+Now after open the link to the api it will ask you about your permission like that :
 
+![image](https://github.com/MoBashandy/zoom-api/assets/105816920/963f1167-b0f7-4cea-9b69-e6f677ff51a7)
+
+after clicking allow you will find a page like that and it the same page that you have to put on redirect url that i name it mo.html :
+
+![image](https://github.com/MoBashandy/zoom-api/assets/105816920/ee354bbe-9066-4f31-a842-512af16d6352)
+
+put your data where topic is the name of the meet and Duration is How many minutes will the meeting last? 
+and click get meeting link and you will get meeting link printing in whe web 
+if you want it to open directly then edit on  the code in index.php at the line 140 instead of echo($link)
+make it:
+
+          header('Location: ' . $link);
 
 
       
